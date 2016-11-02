@@ -58,7 +58,7 @@ public class FirstFitSpiller extends Spiller {
 			handling = new Handling(HandlingsType.LEGGNED, kort);
 		}
 		else if (getAntallTrekk() < Regler.maksTrekk()) {
-			handling = new Handling(HandlingsType.TREKK, null);
+			handling = new Handling(HandlingsType.TREKK, kort);
 		} else {
 			handling = new Handling(HandlingsType.FORBI, null);
 			setAntallTrekk(0);

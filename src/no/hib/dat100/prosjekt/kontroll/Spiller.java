@@ -128,7 +128,7 @@ public abstract class Spiller implements ISpiller {
 	@Override
 	public void trekker(Kort kort) {
 		hand.leggTil(kort);
-		antalltrekk++;
+		antalltrekk = antalltrekk + 1;
 		
 //		throw new RuntimeException("Metode trekker ikke implementert");
 	}

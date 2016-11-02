@@ -318,13 +318,13 @@ ArrayList<Kort> sydhand = syd.getHand().toArrayList();
 
 		Kort kort = null;
 		
-		if (handling.getType().equals(HandlingsType.LEGGNED)) {
-			kort = spiller.nesteHandling(handling.getKort()).getKort();
-			bunkeTil.leggTil(kort);
+		if (handling.getType().equals(HandlingsType.LEGGNED) && Regler.kanLeggeNed(handling.getKort(), bunkeTil.topp())) {
+			kort = handling.getKort();
 			spiller.getHand().fjern(kort);
-			spiller.setAntallTrekk(1);
+			bunkeTil.leggTil(kort);
+			
 			return kort;
-		} else if (handling.getType().equals(HandlingsType.TREKK)) {
+		} else if (handling.getType().equals(HandlingsType.TREKK) && spiller.getAntallTrekk() != Regler.maksTrekk()) {
 			kort = bunkeFra.trekk();
 		spiller.trekker(kort);
 			return kort;
