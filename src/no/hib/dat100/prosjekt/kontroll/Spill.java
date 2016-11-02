@@ -12,7 +12,7 @@ import no.hib.dat100.prosjekt.modell.Kort;
  * 
  */
 public class Spill {
-
+//HEI KRISTIAN
 	// objektvariable for et spill
 
 	// de to spillere
