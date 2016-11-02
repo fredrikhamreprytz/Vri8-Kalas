@@ -148,14 +148,14 @@ public class Spill {
 		if (!bunkeFra.erTom()) {
 			Kort trekk = bunkeFra.taSiste();
 			spiller.trekker(trekk);
-		//	spiller.getHand().leggTil(trekk);
-			
+			// spiller.getHand().leggTil(trekk);
+
 			return trekk;
 		} else {
 			snuTilBunken();
 			Kort trekk = bunkeFra.trekk();
 			spiller.trekker(trekk);
-			//spiller.getHand().leggTil(trekk);
+			// spiller.getHand().leggTil(trekk);
 			return trekk;
 		}
 
@@ -242,7 +242,7 @@ public class Spill {
 	 * @return syds hand som en ArrayList av Kort.
 	 */
 	public ArrayList<Kort> getSydHand() {
-ArrayList<Kort> sydhand = syd.getHand().toArrayList();
+		ArrayList<Kort> sydhand = syd.getHand().toArrayList();
 		return sydhand;
 
 		// throw new RuntimeException("Metode getSydHand ikke implementert");
@@ -317,22 +317,31 @@ ArrayList<Kort> sydhand = syd.getHand().toArrayList();
 	public Kort utforHandling(ISpiller spiller, Handling handling) {
 
 		Kort kort = null;
-		
-		if (handling.getType().equals(HandlingsType.LEGGNED) && Regler.kanLeggeNed(handling.getKort(), bunkeTil.topp())) {
+
+		if (handling.getType().equals(HandlingsType.LEGGNED)
+				&& Regler.kanLeggeNed(handling.getKort(), bunkeTil.topp())) {
 			kort = handling.getKort();
 			spiller.getHand().fjern(kort);
 			bunkeTil.leggTil(kort);
-			
+
 			return kort;
 		} else if (handling.getType().equals(HandlingsType.TREKK) && spiller.getAntallTrekk() != Regler.maksTrekk()) {
-			kort = bunkeFra.trekk();
-		spiller.trekker(kort);
-			return kort;
+			if (bunkeFra.erTom()) {
+				snuTilBunken();
+				kort = bunkeFra.trekk();
+				spiller.trekker(kort);
+				return kort;
+			} else {
+				kort = bunkeFra.trekk();
+				spiller.trekker(kort);
+				return kort;
+
+			}
 		} else {
 			forbiSpiller(spiller);
 			return kort;
 		}
-		
+
 		// Hint: del opp i de tre mulige handlinger og vurder
 		// om noen andre private metoder i klassen kan brukes
 		// til å implementere denne metoden
