@@ -12,7 +12,7 @@ import java.util.Random;
  */
 public abstract class KortSamling {
 
-	public static final int MAKS_KORT_FARGE = 3;
+	public static final int MAKS_KORT_FARGE = 13;
 	private final int MAKS_KORT = 4 * MAKS_KORT_FARGE;
 
 	// tabell for representasjon av samling av kort
@@ -79,10 +79,11 @@ int start = 0;
 		for (int i = 0; i < Kortfarge.values().length; i++) {
 			for (int j = 0; j < MAKS_KORT_FARGE; j++) {
 				samling[start + j] = new Kort(Kortfarge.values()[i], (j + 1));
-				forsteledig ++;
+				forsteledig++;
 				}
 			start = start + MAKS_KORT_FARGE;
 		}
+		
 
 //		throw new RuntimeException("Metode leggTilAlle ikke implementert");
 	}

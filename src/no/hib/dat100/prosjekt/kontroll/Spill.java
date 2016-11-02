@@ -12,7 +12,7 @@ import no.hib.dat100.prosjekt.modell.Kort;
  * 
  */
 public class Spill {
-//HEI KRISTIAN
+
 	// objektvariable for et spill
 
 	// de to spillere
@@ -351,6 +351,8 @@ ArrayList<Kort> sydhand = syd.getHand().toArrayList();
 	public boolean nedkortSyd(Kort kort) {
 
 		if (Regler.kanLeggeNed(kort, bunkeTil.seSiste())) {
+			syd.getHand().fjern(kort);
+			bunkeTil.leggTil(kort);
 			return true;
 		}
 		return false;
